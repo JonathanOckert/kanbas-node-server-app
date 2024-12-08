@@ -11,7 +11,9 @@ export default function AssignmentRoutes(app) {
     // delete assignment
     app.delete("/api/assignments/:assignmentId", (req, res) => {
         const { assignmentId } = req.params;
-        const status = dao.deleteAssignment(assignmentId);
+        const assignmentToDelete = req.body;
+        console.log("deleting assignment: ", assignmentToDelete);
+        const status = dao.deleteAssignment(assignmentToDelete);
         res.send(status);
     });
 
