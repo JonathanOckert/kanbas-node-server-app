@@ -9,7 +9,7 @@ export default function AssignmentRoutes(app) {
     // });
 
     // delete assignment
-    app.delete("/api/assignments/:assignmentId", (req, res) => {
+    app.delete("/api/assignments/:assignmentId/delete", (req, res) => {
         const { assignmentId } = req.params;
         //const assignmentToDelete = req.body;
         //console.log("deleting assignment: ", assignmentId);
@@ -23,7 +23,7 @@ export default function AssignmentRoutes(app) {
     // });
 
     // put (update) assignments
-    app.put("/api/assignments/:assignmentID", (req, res) => {
+    app.put("/api/assignments/:assignmentId/update", (req, res) => {
         //const { assignmentId } = req.params;
         const assignmentUpdates = req.body;
         const assignmentId = assignmentUpdates._id;

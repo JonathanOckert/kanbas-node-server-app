@@ -26,13 +26,13 @@ export function unenrollUserInCourse(userId, courseId) {
     const enrollment = enrollments.find(
         (e) => e.user === userId && e.course === courseId
     );
-    console.log("here");
+    //console.log("here");
     if (!enrollment) return;
 
-    console.log("deleting enrollment: ", enrollment);
+    //console.log("deleting enrollment: ", enrollment);
 
     Database.enrollments = enrollments.filter(
         (enrollments) => enrollments._id !== enrollment._id
     );
-    console.log(Database.enrollments);
+    //console.log(Database.enrollments);
 }
