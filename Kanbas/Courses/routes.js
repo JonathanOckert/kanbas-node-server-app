@@ -1,6 +1,7 @@
 import * as dao from "./dao.js";
 import * as modulesDao from "../Modules/dao.js";
 import * as assignmentsDao from "../Assignments/dao.js";
+import * as enrollmentsDao from "../Enrollments/dao.js";
 
 export default function CourseRoutes(app) {
     app.get("/api/courses", (req, res) => {
@@ -47,5 +48,21 @@ export default function CourseRoutes(app) {
         };
         const newAssignment = assignmentsDao.createAssignment(assignment);
         res.send(newAssignment);
+    });
+
+    // delete an enrollment
+    app.delete("/api/courses/:courseId/:userId/unenroll", (req, res) => {
+        const { courseId, userId } = req.params;
+        console.log("here with: ", courseId, " and ", userId);
+        const status = enrollmentsDao.unenrollUserInCourse(userId, courseId);
+        console.log("might have sent");
+        res.send(status);
+    });
+
+    // enroll user
+    app.post("/api/courses/:courseId/:userId/enrollments", (req, res) => {
+        const { courseId, userId } = req.params;
+        const enrollment = enrollmentsDao.enrollUserInCourse(userId, courseId);
+        res.send(enrollment);
     });
 }

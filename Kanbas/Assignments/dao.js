@@ -37,16 +37,16 @@ export function updateAssignment(assignmentId, assignmentUpdates) {
 }
 
 //delete assignments
-// export function deleteAssignment(assignmentId) {
-//     const { assignments } = Database;
-//     Database.assignments = assignments.filter(
-//         (assignment) => assignment._id !== assignmentId
-//     );
-// }
-export function deleteAssignment(assignmentToDelete) {
+export function deleteAssignment(assignmentId) {
     const { assignments } = Database;
-    const aid = assignmentToDelete._id;
     Database.assignments = assignments.filter(
-        (assignment) => assignment._id !== aid
+        (assignment) => assignment._id !== assignmentId
     );
 }
+// export function deleteAssignment(assignmentToDelete) {
+//     const { assignments } = Database;
+//     const aid = assignmentToDelete._id;
+//     Database.assignments = assignments.filter(
+//         (assignment) => assignment._id !== aid
+//     );
+// }
