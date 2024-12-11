@@ -74,7 +74,7 @@ export default function CourseRoutes(app) {
         res.send(enrollment);
     });
 
-    // *** QUIZZES UUU
+    // *** QUIZZES ***
     // find Quizzes
     app.get("/api/courses/:courseId/quizzes", (req, res) => {
         const { courseId } = req.params;
@@ -89,7 +89,14 @@ export default function CourseRoutes(app) {
             course: courseId,
             status: "Unpublished",
         };
-        const newQuiz = dao.createQuiz(quiz);
+        const newQuiz = quizzesDao.createQuiz(quiz);
         res.send(newQuiz);
+    });
+
+    app.put("/api/courses/:courseId/quizzes/:quizId/Edit", (req, res) => {
+        const { quizId } = req.params;
+        const quizUpdates = req.body;
+        const status = quizzesDao.updateQuiz(quizId, quizUpdates);
+        res.send(status);
     });
 }
